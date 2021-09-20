@@ -102,26 +102,7 @@
             class="carousel slide w-100"
             data-ride="carousel"
           >
-            <div id="main" class="carousel-inner w-100" role="listbox">
-              <div class="carousel-item active">
-                <div class="col-md-4">
-                  <div
-                    class="card"
-                    style="width: 18rem"
-                    onclick="cardClicked()"
-                  >
-                    <img
-                      src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX128_CR0,3,128,176_AL_.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <p class="card-text"></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div id="main" class="carousel-inner w-100" role="listbox"></div>
             <a
               class="carousel-control-prev w-auto"
               href="#recipeCarousel"
@@ -183,32 +164,5 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script>
-      $("#recipeCarousel").carousel({
-        interval: 10000,
-      });
-
-      $(".carousel .carousel-item").each(function () {
-        var minPerSlide = 3;
-        var next = $(this).next();
-        if (!next.length) {
-          next = $(this).siblings(":first");
-        }
-        next.children(":first-child").clone().appendTo($(this));
-
-        for (var i = 0; i < minPerSlide; i++) {
-          next = next.next();
-          if (!next.length) {
-            next = $(this).siblings(":first");
-          }
-
-          next.children(":first-child").clone().appendTo($(this));
-        }
-      });
-      function cardClicked() {
-        alert("clicked");
-        konten.innerHTML = "";
-      }
-    </script>
   </body>
 </html>

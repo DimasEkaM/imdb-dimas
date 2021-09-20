@@ -25,21 +25,40 @@ function showMovies(data) {
   var hasil = data.slice(0, 10);
 
   hasil.forEach((movie) => {
-    const { id, title, image, imDbRating, crew } = movie;
-    const movieEl = document.createElement("div");
-    movieEl.classList.add("carousel-item");
-    movieEl.innerHTML = `
-    <div class="col-md-4">
-    <div class="card" style="width: 18rem; " onclick="detailPage('${id}')">
-    <img src="${image}" class="card-img-top" alt="${title}">
-      <div class="card-body">
-        <p class="card-text">${title}</p>
+    const { id, title, image, imDbRating, crew, rank } = movie;
+    var movieEl = "";
+    if (rank == 1) {
+      movieEl = document.createElement("div");
+      movieEl.classList.add("carousel-item");
+      movieEl.classList.add("active");
+      movieEl.innerHTML = `
+      <div class="col-md-4">
+      <div class="card" style="width: 18rem; " onclick="detailPage('${id}')">
+      <img src="${image}" class="card-img-top" alt="${title}">
+        <div class="card-body">
+          <p class="card-text">${title}</p>
+        </div>
+      </div>  
       </div>
-    </div>  
-    </div>
-    `;
+      `;
+    } else {
+      movieEl = document.createElement("div");
+      movieEl.classList.add("carousel-item");
+      movieEl.innerHTML = `
+      <div class="col-md-4">
+      <div class="card" style="width: 18rem; " onclick="detailPage('${id}')">
+      <img src="${image}" class="card-img-top" alt="${title}">
+        <div class="card-body">
+          <p class="card-text">${title}</p>
+        </div>
+      </div>  
+      </div>
+      `;
+    }
+
     main.appendChild(movieEl);
   });
+  slick();
 }
 
 function showMovies2(data) {
@@ -181,4 +200,27 @@ function showDetail(data) {
   </div> 
   `;
   konten.appendChild(movieEl);
+}
+
+function slick() {
+  $("#recipeCarousel").carousel({
+    interval: 10000,
+  });
+  $(".carousel .carousel-item").each(function () {
+    var minPerSlide = 3;
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(":first");
+    }
+    next.children(":first-child").clone().appendTo($(this));
+
+    for (var i = 0; i < minPerSlide; i++) {
+      next = next.next();
+      if (!next.length) {
+        next = $(this).siblings(":first");
+      }
+
+      next.children(":first-child").clone().appendTo($(this));
+    }
+  });
 }
