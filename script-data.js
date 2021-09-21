@@ -32,8 +32,8 @@ function showMovies(data) {
       movieEl.classList.add("carousel-item");
       movieEl.classList.add("active");
       movieEl.innerHTML = `
-      <div class="col-md-4">
-      <div class="card" style="width: 18rem; " onclick="detailPage('${id}')">
+      <div class="col-sm-4 py-2">
+      <div class="card h-100" style="width: 18rem; " onclick="detailPage('${id}')">
       <img src="${image}" class="card-img-top" alt="${title}">
         <div class="card-body">
           <p class="card-text">${title}</p>
@@ -45,8 +45,8 @@ function showMovies(data) {
       movieEl = document.createElement("div");
       movieEl.classList.add("carousel-item");
       movieEl.innerHTML = `
-      <div class="col-md-4">
-      <div class="card" style="width: 18rem; " onclick="detailPage('${id}')">
+      <div class="col-sm-4 py-2">
+      <div class="card h-100" style="width: 18rem; " onclick="detailPage('${id}')">
       <img src="${image}" class="card-img-top" alt="${title}">
         <div class="card-body">
           <p class="card-text">${title}</p>
